@@ -53,6 +53,6 @@ python api_homework/posts.py
 
 ## История изменений
 
-Разработка примера `hello.py` с добавлением функции возведения в квадрат выполнена в отдельной ветке и объединена с `main` через [Pull Request #1](../../pull/1).
+Разработка примера `hello.py` с добавлением функции возведения в квадрат выполнена в отдельной ветке и объединена с `main` через [Pull Request #1](https://github.com/EminenceSH/python-git-homework-HSE/pull/1).
 
-Примеры работы с HTTP API добавлены через [Pull Request #2](../../pull/2).
+Примеры работы с HTTP API добавлены через [Pull Request #2](https://github.com/EminenceSH/python-git-homework-HSE/pull/2).

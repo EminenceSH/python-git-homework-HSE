@@ -37,3 +37,21 @@ python hello.py
 5. Объединить изменения с `main`.
 
 Список завершённых Pull Request можно проверить во вкладке **Pull requests → Closed**.
+
+## Домашняя работа 2 — GET-запросы, JSON и параметры API
+
+Код второго задания находится в папке [`api_homework/`](api_homework/README.md):
+
+- [`posts.py`](api_homework/posts.py) — GET `/posts` (JSONPlaceholder), вывод первых 5 заголовков и текстов;
+- [`weather.py`](api_homework/weather.py) — запрос текущей погоды в OpenWeather по введённому городу;
+- [`requirements.txt`](api_homework/requirements.txt) — необходимые зависимости.
+
+**Запуск из корня репозитория:**
+
+```bash
+python -m pip install -r api_homework/requirements.txt
+python api_homework/posts.py
+python api_homework/weather.py
+```
+
+Для `weather.py` нужен личный ключ API в переменной окружения `OPENWEATHER_API_KEY`. Порядок настройки для Windows и Linux приведён в [инструкции по заданию](api_homework/README.md). Не публикуйте API-ключ в репозитории.

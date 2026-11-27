@@ -1,57 +1,58 @@
-# Python Git Homework — HSE
+# Python: Git и HTTP API
 
-Учебный репозиторий для отработки работы с **Git** и **GitHub**: создание репозитория, клонирование на компьютер, создание ветки, коммиты, Pull Request и слияние с основной веткой `main`.
+Репозиторий с примерами программ на Python и историей работы с Git/GitHub. Проект включает простую консольную программу, блокнот Jupyter Notebook и примеры взаимодействия с публичными HTTP API.
 
-## Содержимое
+## Структура проекта
 
-- `hello.py` — простая программа на Python: выводит приветствие; в дополнительной ветке реализована функция возведения числа в квадрат.
-- `example.ipynb` — блокнот Jupyter Notebook для запуска через Google Colab.
+| Файл или каталог | Описание |
+| --- | --- |
+| [`hello.py`](hello.py) | Приветствие и вычисление квадрата числа. |
+| [`example.ipynb`](example.ipynb) | Блокнот Jupyter Notebook с примером выполнения Python-кода. |
+| [`api_homework/`](api_homework/README.md) | Программы для GET-запросов, обработки JSON и получения погоды через API. |
 
-## Запуск на компьютере
+## Требования
 
-Необходим Python 3.
+- Python 3
+- Git — для клонирования репозитория
+- Библиотека `requests` — для примеров с HTTP API
+
+## Установка и запуск
+
+Клонирование репозитория:
 
 ```bash
 git clone https://github.com/EminenceSH/python-git-homework-HSE.git
 cd python-git-homework-HSE
+```
+
+Запуск основной программы:
+
+```bash
 python hello.py
 ```
 
-После слияния Pull Request программа выводит:
+Вывод:
 
 ```text
 Привет, мир!
 Квадрат числа 5: 25
 ```
 
-## Запуск в Google Colab
-
-Откройте [Google Colab](https://colab.research.google.com/), выберите **GitHub**, найдите репозиторий `EminenceSH/python-git-homework-HSE` и откройте `example.ipynb`. Запустите ячейку с кодом.
-
-## Практика работы с ветками
-
-1. Клонировать репозиторий.
-2. Создать ветку `feature/add-square`.
-3. Изменить `hello.py`, добавив функцию `square()`.
-4. Отправить ветку в GitHub и создать Pull Request в `main`.
-5. Объединить изменения с `main`.
-
-Список завершённых Pull Request можно проверить во вкладке **Pull requests → Closed**.
-
-## Домашняя работа 2 — GET-запросы, JSON и параметры API
-
-Код второго задания находится в папке [`api_homework/`](api_homework/README.md):
-
-- [`posts.py`](api_homework/posts.py) — GET `/posts` (JSONPlaceholder), вывод первых 5 заголовков и текстов;
-- [`weather.py`](api_homework/weather.py) — запрос текущей погоды в OpenWeather по введённому городу;
-- [`requirements.txt`](api_homework/requirements.txt) — необходимые зависимости.
-
-**Запуск из корня репозитория:**
+Для работы с HTTP API установите зависимости и запустите нужный скрипт:
 
 ```bash
 python -m pip install -r api_homework/requirements.txt
 python api_homework/posts.py
-python api_homework/weather.py
 ```
 
-Для `weather.py` нужен личный ключ API в переменной окружения `OPENWEATHER_API_KEY`. Порядок настройки для Windows и Linux приведён в [инструкции по заданию](api_homework/README.md). Не публикуйте API-ключ в репозитории.
+Получение погоды требует API-ключа OpenWeather. Настройка и запуск описаны в [документации к HTTP-примерам](api_homework/README.md).
+
+## Jupyter Notebook
+
+Блокнот [`example.ipynb`](example.ipynb) можно открыть локально в Jupyter Notebook или в [Google Colab](https://colab.research.google.com/github/EminenceSH/python-git-homework-HSE/blob/main/example.ipynb).
+
+## История изменений
+
+Разработка примера `hello.py` с добавлением функции возведения в квадрат выполнена в отдельной ветке и объединена с `main` через [Pull Request #1](../../pull/1).
+
+Примеры работы с HTTP API добавлены через [Pull Request #2](../../pull/2).

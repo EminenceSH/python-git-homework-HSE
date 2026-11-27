@@ -1,27 +1,38 @@
-# Домашняя работа: GET-запросы и JSON
+# Работа с HTTP API на Python
 
-Оба задания реализованы на Python с использованием библиотеки [`requests`](https://requests.readthedocs.io/).
+Примеры отправки GET-запросов с помощью библиотеки [`requests`](https://requests.readthedocs.io/), обработки JSON-ответов и передачи параметров в URL-запросах.
 
-## Содержание
+## Состав
 
-| Файл | Назначение |
+| Файл | Описание |
 | --- | --- |
-| `posts.py` | Отправляет GET-запрос к `https://jsonplaceholder.typicode.com/posts`, разбирает JSON, выводит заголовки и тексты первых 5 постов. |
-| `weather.py` | Спрашивает город, отправляет GET-запрос к OpenWeather с параметрами, выводит температуру в °C и описание погоды. |
-| `requirements.txt` | Зависимость `requests`. |
+| [`posts.py`](posts.py) | Загружает публикации из JSONPlaceholder и выводит заголовки и тексты первых пяти записей. |
+| [`weather.py`](weather.py) | Получает текущую температуру и описание погоды по названию города через OpenWeather. |
+| [`requirements.txt`](requirements.txt) | Список зависимостей проекта. |
 
-## Как запустить
+## Подготовка окружения
 
-Из корня репозитория:
+Требуется Python 3 и доступ в интернет. Из корневой папки репозитория установите зависимости:
 
 ```bash
 python -m pip install -r api_homework/requirements.txt
+```
+
+## Пример 1. Публикации JSONPlaceholder
+
+Запуск:
+
+```bash
 python api_homework/posts.py
 ```
 
-Для второй задачи нужен **личный API-ключ OpenWeather**. Зарегистрируйтесь на [OpenWeather](https://openweathermap.org/api), найдите API key в личном кабинете. Не добавляйте ключ в код или GitHub.
+Скрипт выполняет запрос `GET https://jsonplaceholder.typicode.com/posts`, преобразует JSON-ответ в список объектов и выводит поля `title` и `body` первых пяти публикаций.
 
-**Windows PowerShell** — установить переменную окружения для текущего терминала:
+## Пример 2. Текущая погода OpenWeather
+
+Для работы необходим действующий API-ключ сервиса [OpenWeather](https://openweathermap.org/api). Ключ передаётся через переменную окружения `OPENWEATHER_API_KEY`, а не хранится в исходном коде.
+
+**Windows PowerShell**:
 
 ```powershell
 $env:OPENWEATHER_API_KEY = "ВАШ_API_КЛЮЧ"
@@ -35,30 +46,27 @@ export OPENWEATHER_API_KEY="ВАШ_API_КЛЮЧ"
 python api_homework/weather.py
 ```
 
-Программа попросит название города (например, `Омск`), отправит запрос к `https://api.openweathermap.org/data/2.5/weather` с параметрами:
+Программа запрашивает название города и обращается к `GET https://api.openweathermap.org/data/2.5/weather` с параметрами:
 
-- `q`: введённое название города;
-- `appid`: ключ из `OPENWEATHER_API_KEY`;
-- `units=metric`: температура в градусах Цельсия;
-- `lang=ru`: описание погоды на русском.
+| Параметр | Значение |
+| --- | --- |
+| `q` | Название города, введённое пользователем |
+| `appid` | API-ключ из переменной окружения |
+| `units` | `metric` — температура в °C |
+| `lang` | `ru` — описание погоды на русском языке |
 
-Ожидаемый формат вывода (числа и погодные условия зависят от фактического ответа API):
+Пример формата вывода (фактические значения зависят от текущей погоды):
 
 ```text
 Введите название города: Омск
 Город: Omsk
-Температура: <текущее значение> °C
-Погода: <описание>
+Температура: 12.5 °C
+Погода: облачно
 ```
 
-Обрабатываются сетевые ошибки, отсутствие ключа, неверный ключ (401), неизвестный город (404), превышение лимита (429) и некорректный JSON.
+Скрипт обрабатывает отсутствие API-ключа, ошибку авторизации, неизвестный город, превышение лимита запросов, сетевые ошибки и некорректные данные ответа.
 
-## Соответствие критериям
+## Используемые API
 
-- [x] **Задание 1:** GET `/posts`, разбор JSON и печать заголовка и тела первых пяти постов.
-- [x] **Задание 2:** ввод названия города, GET к OpenWeather с параметрами, вывод температуры и описания погоды (при наличии действующего API-ключа).
-
-## Документация API
-
-- [JSONPlaceholder](https://jsonplaceholder.typicode.com/)
-- [OpenWeather — Current weather data](https://openweathermap.org/api/current)
+- [JSONPlaceholder — Posts](https://jsonplaceholder.typicode.com/)
+- [OpenWeather — Current weather data](https://openweathermap.org/current)
